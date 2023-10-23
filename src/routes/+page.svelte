@@ -2,6 +2,7 @@
 	import * as d3 from 'd3';
 	import type { IrisItem } from '$lib/stores/IrisItem';
 	import { getContext } from 'svelte';
+	import AxisBottom from '$lib/components/AxisBottom.svelte';
 
 	// grab the chart data from the store
 	const chartData: any = getContext('irisDataset');
@@ -36,4 +37,8 @@
 		.nice();
 </script>
 
-<svg {width} {height}> <g transform={`translate(${margin.left}, ${margin.top})`} /></svg>
+<svg {width} {height}>
+	<g transform={`translate(${margin.left}, ${margin.top})`}
+		><AxisBottom {xScale} {innerHeight} tickOffset={10} /></g
+	></svg
+>
