@@ -4,6 +4,7 @@
 	import { getContext } from 'svelte';
 	import AxisBottom from '$lib/components/AxisBottom.svelte';
 	import AxisLeft from '$lib/components/AxisLeft.svelte';
+	import Marks from '$lib/components/Marks.svelte';
 
 	// grab the chart data from the store
 	const chartData: any = getContext('irisDataset');
@@ -42,5 +43,6 @@
 	<g transform={`translate(${margin.left}, ${margin.top})`}>
 		<AxisBottom {xScale} {innerHeight} tickOffset={10} />
 		<AxisLeft {yScale} {innerWidth} tickOffset={10} />
+		<Marks data={$chartData} {xScale} {yScale} {yValue} {xValue} circleRadius={10} />
 	</g></svg
 >
