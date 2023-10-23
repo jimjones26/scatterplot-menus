@@ -11,6 +11,6 @@
 
 {#each data as item, i}
 	<circle cx={xScale(xValue(item))} cy={yScale(yValue(item))} r={circleRadius} fill="#137B80">
-		<title>hover</title>
+		<title>{`x: ${xValue(item)}, y: ${yValue(item)}`}</title>
 	</circle>
 {/each}
