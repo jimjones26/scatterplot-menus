@@ -1,4 +1,5 @@
 <script lang="ts">
+	import * as d3 from 'd3';
 	import type { IrisItem } from '$lib/stores/IrisItem';
 	import { getContext } from 'svelte';
 
@@ -21,6 +22,18 @@
 	// x and y axis labels
 	const xAxisLabel = 'Sepal Length';
 	const yAxisLabel = 'Sepal Width';
+
+	// x and y scales
+	const xScale = d3
+		.scaleLinear()
+		.domain(<Iterable<number>>d3.extent($chartData, xValue))
+		.range([0, innerWidth])
+		.nice();
+	const yScale = d3
+		.scaleLinear()
+		.domain(<Iterable<number>>d3.extent($chartData, yValue))
+		.range([0, innerHeight])
+		.nice();
 </script>
 
 <svg {width} {height}> <g transform={`translate(${margin.left}, ${margin.top})`} /></svg>
