@@ -6,15 +6,12 @@
 
 {#each xScale.ticks() as tick, i}
 	<g transform={`translate(${xScale(tick)}, 0)`}>
-		<line x1={0} y1={0} x2={0} y2={innerHeight} stroke="#C0C0BB" />
-		<text class="label" y={innerHeight + tickOffset} style="text-anchor: middle;" dy={'.71em'}
-			>{tick}</text
+		<line x1={0} y1={0} x2={0} y2={innerHeight} class="mt-10 stroke-slate-300" />
+		<text
+			class="fill-slate-500"
+			y={innerHeight + tickOffset}
+			style="text-anchor: middle;"
+			dy={'.71em'}>{tick}</text
 		>
 	</g>
 {/each}
-
-<style>
-	.label {
-		fill: #635f5d;
-	}
-</style>
