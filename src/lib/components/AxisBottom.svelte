@@ -6,7 +6,7 @@
 
 {#each xScale.ticks() as tick, i}
 	<g transform={`translate(${xScale(tick)}, 0)`}>
-		<line x1={0} y1={0} x2={0} y2={innerHeight} class="mt-10 stroke-slate-300" />
+		<line x1={0} y1={0} x2={0} y2={innerHeight} class="stroke-slate-300" />
 		<text
 			class="fill-slate-500"
 			y={innerHeight + tickOffset}
