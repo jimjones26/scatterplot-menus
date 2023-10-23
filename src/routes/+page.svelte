@@ -44,5 +44,16 @@
 		<AxisBottom {xScale} {innerHeight} tickOffset={10} />
 		<AxisLeft {yScale} {innerWidth} tickOffset={10} />
 		<Marks data={$chartData} {xScale} {yScale} {yValue} {xValue} circleRadius={10} />
+		<text
+			text-anchor="middle"
+			transform={`translate(${-40}, ${innerHeight / 2}) rotate(-90)`}
+			class="fill-slate-600 text-xl">{yAxisLabel}</text
+		>
+		<text
+			x={innerWidth / 2}
+			y={innerHeight + 40}
+			text-anchor="middle"
+			class="fill-slate-600 text-xl">{xAxisLabel}</text
+		>
 	</g></svg
 >
