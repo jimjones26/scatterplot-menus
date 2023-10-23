@@ -3,6 +3,7 @@
 	import type { IrisItem } from '$lib/stores/IrisItem';
 	import { getContext } from 'svelte';
 	import AxisBottom from '$lib/components/AxisBottom.svelte';
+	import AxisLeft from '$lib/components/AxisLeft.svelte';
 
 	// grab the chart data from the store
 	const chartData: any = getContext('irisDataset');
@@ -38,7 +39,8 @@
 </script>
 
 <svg {width} {height}>
-	<g transform={`translate(${margin.left}, ${margin.top})`}
-		><AxisBottom {xScale} {innerHeight} tickOffset={10} /></g
-	></svg
+	<g transform={`translate(${margin.left}, ${margin.top})`}>
+		<AxisBottom {xScale} {innerHeight} tickOffset={10} />
+		<AxisLeft {yScale} {innerWidth} tickOffset={10} />
+	</g></svg
 >
