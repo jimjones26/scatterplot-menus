@@ -1,5 +1,5 @@
 
-import { writable } from 'svelte/store';
+import { get, writable } from 'svelte/store';
 import type { IrisItem } from './IrisItem';
 
 let _initialStoreValue: object = {
@@ -16,12 +16,14 @@ const _dataStore = () => {
     updateData: (data: Array<IrisItem>) => update((currentState: object) => {
       return { ...currentState, data: data }
     }),
-    updateSelectedX: (value: number) => (currentState: object) => {
+    updateSelectedX: (value: number) => update((currentState: object) => {
+      console.log("Updated Selected X: ", value);
+
       return { ...currentState, selectedX: value }
-    },
-    updateSelectedY: (value: number) => (currentState: object) => {
+    }),
+    updateSelectedY: (value: number) => update((currentState: object) => {
       return { ...currentState, selectedY: value }
-    }
+    })
   }
 }
 
