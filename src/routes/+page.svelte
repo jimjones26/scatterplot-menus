@@ -5,6 +5,7 @@
 	import AxisBottom from '$lib/components/AxisBottom.svelte';
 	import AxisLeft from '$lib/components/AxisLeft.svelte';
 	import Marks from '$lib/components/Marks.svelte';
+	import * as Select from '$lib/components/ui/select';
 
 	// grab the chart data from the store
 	const chartData: any = getContext('irisDataset');
@@ -39,21 +40,36 @@
 		.nice();
 </script>
 
-<svg {width} {height}>
-	<g transform={`translate(${margin.left}, ${margin.top})`}>
-		<AxisBottom {xScale} {innerHeight} tickOffset={10} />
-		<AxisLeft {yScale} {innerWidth} tickOffset={10} />
-		<Marks data={$chartData} {xScale} {yScale} {yValue} {xValue} circleRadius={10} />
-		<text
-			text-anchor="middle"
-			transform={`translate(${-40}, ${innerHeight / 2}) rotate(-90)`}
-			class="fill-slate-600 text-xl">{yAxisLabel}</text
-		>
-		<text
-			x={innerWidth / 2}
-			y={innerHeight + 40}
-			text-anchor="middle"
-			class="fill-slate-600 text-xl">{xAxisLabel}</text
-		>
-	</g></svg
->
+<div>
+	<Select.Root>
+		<div class="flex">
+			<Select.Label>X:</Select.Label>
+			<Select.Trigger class="w-[180px]">
+				<Select.Value placeholder="Theme" />
+			</Select.Trigger>
+			<Select.Content>
+				<Select.Item value="light">Light</Select.Item>
+				<Select.Item value="dark">Dark</Select.Item>
+				<Select.Item value="system">System</Select.Item>
+			</Select.Content>
+		</div>
+	</Select.Root>
+	<svg {width} {height}>
+		<g transform={`translate(${margin.left}, ${margin.top})`}>
+			<AxisBottom {xScale} {innerHeight} tickOffset={10} />
+			<AxisLeft {yScale} {innerWidth} tickOffset={10} />
+			<Marks data={$chartData} {xScale} {yScale} {yValue} {xValue} circleRadius={10} />
+			<text
+				text-anchor="middle"
+				transform={`translate(${-40}, ${innerHeight / 2}) rotate(-90)`}
+				class="fill-slate-600 text-xl">{yAxisLabel}</text
+			>
+			<text
+				x={innerWidth / 2}
+				y={innerHeight + 40}
+				text-anchor="middle"
+				class="fill-slate-600 text-xl">{xAxisLabel}</text
+			>
+		</g></svg
+	>
+</div>
