@@ -39,14 +39,9 @@
 		.domain(<Iterable<number>>d3.extent($chartData.data, yValue))
 		.range([0, innerHeight])
 		.nice();
-
-	function handleClick(value: number) {
-		dataStore.updateSelectedX(value);
-	}
 </script>
 
 <div>
-	<button on:click={() => handleClick(400)}>CLICK ME</button>
 	{$chartData.selectedX}
 	<Select.Root>
 		<div class="flex">
