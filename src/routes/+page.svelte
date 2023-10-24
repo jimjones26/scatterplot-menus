@@ -6,6 +6,7 @@
 	import AxisLeft from '$lib/components/AxisLeft.svelte';
 	import Marks from '$lib/components/Marks.svelte';
 	import * as Select from '$lib/components/ui/select';
+	import { dataStore } from '$lib/stores/data-store';
 
 	// grab the chart data from the store
 	const chartData: any = getContext('irisDataset');
@@ -38,9 +39,15 @@
 		.domain(<Iterable<number>>d3.extent($chartData.data, yValue))
 		.range([0, innerHeight])
 		.nice();
+
+	function handleClick(value: number) {
+		dataStore.updateSelectedX(value);
+	}
 </script>
 
 <div>
+	<button on:click={() => handleClick(400)}>CLICK ME</button>
+	{$chartData.selectedX}
 	<Select.Root>
 		<div class="flex">
 			<Select.Label>X:</Select.Label>
