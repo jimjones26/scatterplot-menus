@@ -9,7 +9,7 @@
 
 	let parsedData = d3.csvParse(data.data, d3.autoType);
 
-	$: dataStore.set(parsedData);
+	$: dataStore.updateData(parsedData);
 
 	setContext('irisDataset', dataStore);
 </script>

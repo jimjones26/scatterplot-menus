@@ -30,12 +30,12 @@
 	// x and y scales
 	const xScale = d3
 		.scaleLinear()
-		.domain(<Iterable<number>>d3.extent($chartData, xValue))
+		.domain(<Iterable<number>>d3.extent($chartData.data, xValue))
 		.range([0, innerWidth])
 		.nice();
 	const yScale = d3
 		.scaleLinear()
-		.domain(<Iterable<number>>d3.extent($chartData, yValue))
+		.domain(<Iterable<number>>d3.extent($chartData.data, yValue))
 		.range([0, innerHeight])
 		.nice();
 </script>
@@ -58,7 +58,7 @@
 		<g transform={`translate(${margin.left}, ${margin.top})`}>
 			<AxisBottom {xScale} {innerHeight} tickOffset={10} />
 			<AxisLeft {yScale} {innerWidth} tickOffset={10} />
-			<Marks data={$chartData} {xScale} {yScale} {yValue} {xValue} circleRadius={10} />
+			<Marks data={$chartData.data} {xScale} {yScale} {yValue} {xValue} circleRadius={10} />
 			<text
 				text-anchor="middle"
 				transform={`translate(${-40}, ${innerHeight / 2}) rotate(-90)`}

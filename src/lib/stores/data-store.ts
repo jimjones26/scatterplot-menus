@@ -2,16 +2,26 @@
 import { writable } from 'svelte/store';
 import type { IrisItem } from './IrisItem';
 
+let _initialStoreValue: object = {
+  data: [],
+  selectedX: null,
+  selectedY: null
+}
+
 const _dataStore = () => {
-  const { set, update, subscribe } = writable([{}])
+  const { set, update, subscribe } = writable(_initialStoreValue)
 
   return {
     subscribe,
-    set: (data: Array<IrisItem>) => set(data),
-    update: (item: IrisItem) => update((currentState: any) => {
-      currentState.csvData.push(item)
-      return { ...currentState }
-    })
+    updateData: (data: Array<IrisItem>) => update((currentState: object) => {
+      return { ...currentState, data: data }
+    }),
+    updateSelectedX: (value: number) => (currentState: object) => {
+      return { ...currentState, selectedX: value }
+    },
+    updateSelectedY: (value: number) => (currentState: object) => {
+      return { ...currentState, selectedY: value }
+    }
   }
 }
 
