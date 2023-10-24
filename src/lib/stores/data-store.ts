@@ -17,8 +17,6 @@ const _dataStore = () => {
       return { ...currentState, data: data }
     }),
     updateSelectedX: (value: number) => update((currentState: object) => {
-      console.log("Updated Selected X: ", value);
-
       return { ...currentState, selectedX: value }
     }),
     updateSelectedY: (value: number) => update((currentState: object) => {
