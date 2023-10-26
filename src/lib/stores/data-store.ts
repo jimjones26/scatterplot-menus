@@ -16,10 +16,10 @@ const _dataStore = () => {
     updateData: (data: Array<IrisItem>) => update((currentState: object) => {
       return { ...currentState, data: data }
     }),
-    updateSelectedX: (value: number) => update((currentState: object) => {
+    updateSelectedX: (value: any) => update((currentState: object) => {
       return { ...currentState, selectedX: value }
     }),
-    updateSelectedY: (value: number) => update((currentState: object) => {
+    updateSelectedY: (value: any) => update((currentState: object) => {
       return { ...currentState, selectedY: value }
     })
   }
