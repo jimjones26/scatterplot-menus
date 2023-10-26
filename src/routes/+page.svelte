@@ -43,7 +43,10 @@
 
 <div>
 	{$chartData.selectedX}
-	<Select.Root>
+	<Select.Root
+		onSelectedChange={(item) => dataStore.updateSelectedX(item?.value)}
+		selected={$chartData.selectedX}
+	>
 		<div class="flex">
 			<Select.Label>X:</Select.Label>
 			<Select.Trigger class="w-[180px]">
