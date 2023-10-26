@@ -42,6 +42,7 @@
 
 <div>
 	{$chartData.selectedX}
+	{$chartData.selectedY}
 	<AxisSelectMenus />
 	<svg {width} {height}>
 		<g transform={`translate(${margin.left}, ${margin.top})`}>
