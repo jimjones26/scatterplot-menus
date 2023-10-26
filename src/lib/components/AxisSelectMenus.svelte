@@ -9,10 +9,7 @@
 
 <div class="flex pl-4">
 	<!-- X Axis Menu -->
-	<Select.Root
-		onSelectedChange={(item) => dataStore.updateSelectedX(item?.value)}
-		selected={$chartData.selectedX}
-	>
+	<Select.Root onSelectedChange={(item) => dataStore.updateSelectedX(item?.value)}>
 		<div class="flex">
 			<Select.Label>X:</Select.Label>
 			<Select.Trigger class="w-[180px]">
@@ -27,10 +24,7 @@
 	</Select.Root>
 
 	<!-- Y Axis Menu -->
-	<Select.Root
-		onSelectedChange={(item) => dataStore.updateSelectedY(item?.value)}
-		selected={$chartData.selectedY}
-	>
+	<Select.Root onSelectedChange={(item) => dataStore.updateSelectedY(item?.value)}>
 		<div class="flex">
 			<Select.Label>Y:</Select.Label>
 			<Select.Trigger class="w-[180px]">
