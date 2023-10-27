@@ -7,6 +7,7 @@
 	import Marks from '$lib/components/Marks.svelte';
 	import AxisSelectMenus from '$lib/components/AxisSelectMenus.svelte';
 	import { dataStore } from '$lib/stores/data-store';
+	import ColorLegend from '$lib/components/ColorLegend.svelte';
 
 	// grab the chart data from the store
 	const chartData: any = getContext('irisDataset');
@@ -23,7 +24,7 @@
 	// width, height and margins for svg container
 	const width: number = 960;
 	const height: number = 500;
-	const margin = { top: 20, right: 30, bottom: 50, left: 70 };
+	const margin = { top: 20, right: 105, bottom: 50, left: 70 };
 
 	// inner height and width of chart
 	const innerHeight = height - margin.top - margin.bottom;
@@ -38,6 +39,7 @@
 	// x and y axis values
 	const xValue = (item: any) => item[$chartData.selectedX];
 	const yValue = (item: any) => item[$chartData.selectedY];
+	const colorValue = (item: any) => item.species;
 
 	// create function to get value from label
 	const getLabel = (value: string) => {
@@ -63,6 +65,10 @@
 		.domain(<Iterable<number>>d3.extent($chartData.data, yValue))
 		.range([0, innerHeight])
 		.nice();
+	$: colorScale = d3
+		.scaleOrdinal()
+		.domain($chartData.data.map(colorValue))
+		.range(['#E6842A85', '#137B8085', '#8E6C8A85']);
 </script>
 
 <div class="mt-5">
@@ -71,7 +77,19 @@
 		<g transform={`translate(${margin.left}, ${margin.top})`}>
 			<AxisBottom {xScale} {innerHeight} tickOffset={15} />
 			<AxisLeft {yScale} {innerWidth} tickOffset={15} />
-			<Marks data={$chartData.data} {xScale} {yScale} {yValue} {xValue} circleRadius={8} />
+			<g transform={`translate(${innerWidth + 20}, 10)`}
+				><ColorLegend {colorScale} tickSpacing={25} tickSize={8} /></g
+			>
+			<Marks
+				data={$chartData.data}
+				{xScale}
+				{yScale}
+				{yValue}
+				{xValue}
+				{colorScale}
+				{colorValue}
+				circleRadius={8}
+			/>
 			<text
 				text-anchor="middle"
 				transform={`translate(${-45}, ${innerHeight / 2}) rotate(-90)`}
