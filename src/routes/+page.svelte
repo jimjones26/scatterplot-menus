@@ -65,9 +65,7 @@
 		.nice();
 </script>
 
-<div>
-	{$chartData.selectedX}
-	{$chartData.selectedY}
+<div class="mt-5">
 	<AxisSelectMenus {attributes} {xAxisLabel} {yAxisLabel} />
 	<svg {width} {height}>
 		<g transform={`translate(${margin.left}, ${margin.top})`}>
