@@ -7,6 +7,8 @@
 	const chartData: any = getContext('irisDataset');
 
 	export let attributes: any;
+	export let xAxisLabel: any;
+	export let yAxisLabel: any;
 </script>
 
 <div class="flex pl-4">
@@ -15,7 +17,7 @@
 		<div class="flex">
 			<Select.Label>X:</Select.Label>
 			<Select.Trigger class="w-[180px]">
-				<Select.Value placeholder={$chartData.selectedX} />
+				<Select.Value placeholder={xAxisLabel} />
 			</Select.Trigger>
 			<Select.Content>
 				{#each attributes as option}
@@ -30,7 +32,7 @@
 		<div class="flex">
 			<Select.Label>Y:</Select.Label>
 			<Select.Trigger class="w-[180px]">
-				<Select.Value placeholder={$chartData.selectedY} />
+				<Select.Value placeholder={yAxisLabel} />
 			</Select.Trigger>
 			<Select.Content>
 				{#each attributes as option}

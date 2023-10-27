@@ -68,7 +68,7 @@
 <div>
 	{$chartData.selectedX}
 	{$chartData.selectedY}
-	<AxisSelectMenus {attributes} />
+	<AxisSelectMenus {attributes} {xAxisLabel} {yAxisLabel} />
 	<svg {width} {height}>
 		<g transform={`translate(${margin.left}, ${margin.top})`}>
 			<AxisBottom {xScale} {innerHeight} tickOffset={10} />
