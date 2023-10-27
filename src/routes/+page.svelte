@@ -6,6 +6,7 @@
 	import AxisLeft from '$lib/components/AxisLeft.svelte';
 	import Marks from '$lib/components/Marks.svelte';
 	import AxisSelectMenus from '$lib/components/AxisSelectMenus.svelte';
+	import { dataStore } from '$lib/stores/data-store';
 
 	// grab the chart data from the store
 	const chartData: any = getContext('irisDataset');
@@ -28,9 +29,15 @@
 	const innerHeight = height - margin.top - margin.bottom;
 	const innerWidth = width - margin.left - margin.right;
 
+	// define initial axis values and update store
+	const initialXAttribute = 'petal_length';
+	dataStore.updateSelectedX(initialXAttribute);
+	const initialYAttribute = 'sepal_width';
+	dataStore.updateSelectedY(initialYAttribute);
+
 	// x and y axis values
-	const xValue = (item: IrisItem) => item.sepal_length;
-	const yValue = (item: IrisItem) => item.petal_width;
+	const xValue = (item: any) => item[$chartData.selectedX];
+	const yValue = (item: any) => item[$chartData.selectedY];
 
 	// x and y axis labels
 	const xAxisLabel = 'Sepal Length';
