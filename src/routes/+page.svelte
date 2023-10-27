@@ -7,6 +7,7 @@
 	import Marks from '$lib/components/Marks.svelte';
 	import AxisSelectMenus from '$lib/components/AxisSelectMenus.svelte';
 	import { dataStore } from '$lib/stores/data-store';
+	import ColorLegend from '$lib/components/ColorLegend.svelte';
 
 	// grab the chart data from the store
 	const chartData: any = getContext('irisDataset');
@@ -23,7 +24,7 @@
 	// width, height and margins for svg container
 	const width: number = 960;
 	const height: number = 500;
-	const margin = { top: 20, right: 30, bottom: 50, left: 70 };
+	const margin = { top: 20, right: 105, bottom: 50, left: 70 };
 
 	// inner height and width of chart
 	const innerHeight = height - margin.top - margin.bottom;
@@ -76,6 +77,9 @@
 		<g transform={`translate(${margin.left}, ${margin.top})`}>
 			<AxisBottom {xScale} {innerHeight} tickOffset={15} />
 			<AxisLeft {yScale} {innerWidth} tickOffset={15} />
+			<g transform={`translate(${innerWidth + 20}, 10)`}
+				><ColorLegend {colorScale} tickSpacing={25} tickSize={8} /></g
+			>
 			<Marks
 				data={$chartData.data}
 				{xScale}
