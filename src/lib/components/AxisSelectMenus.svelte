@@ -5,6 +5,8 @@
 
 	// grab the chart data from the store
 	const chartData: any = getContext('irisDataset');
+
+	export let attributes: any;
 </script>
 
 <div class="flex pl-4">
@@ -13,12 +15,12 @@
 		<div class="flex">
 			<Select.Label>X:</Select.Label>
 			<Select.Trigger class="w-[180px]">
-				<Select.Value placeholder="Theme" />
+				<Select.Value placeholder={$chartData.selectedX} />
 			</Select.Trigger>
 			<Select.Content>
-				<Select.Item value="light">Light</Select.Item>
-				<Select.Item value="dark">Dark</Select.Item>
-				<Select.Item value="system">System</Select.Item>
+				{#each attributes as option}
+					<Select.Item value={option.value}>{option.label}</Select.Item>
+				{/each}
 			</Select.Content>
 		</div>
 	</Select.Root>
@@ -28,12 +30,12 @@
 		<div class="flex">
 			<Select.Label>Y:</Select.Label>
 			<Select.Trigger class="w-[180px]">
-				<Select.Value placeholder="Theme" />
+				<Select.Value placeholder={$chartData.selectedY} />
 			</Select.Trigger>
 			<Select.Content>
-				<Select.Item value="light">Light</Select.Item>
-				<Select.Item value="dark">Dark</Select.Item>
-				<Select.Item value="system">System</Select.Item>
+				{#each attributes as option}
+					<Select.Item value={option.value}>{option.label}</Select.Item>
+				{/each}
 			</Select.Content>
 		</div>
 	</Select.Root>

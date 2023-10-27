@@ -12,7 +12,7 @@
 	const chartData: any = getContext('irisDataset');
 
 	// create attributes object for axis' values and labels
-	const attibutes = [
+	const attributes = [
 		{ value: 'sepal_length', label: 'Sepal Length' },
 		{ value: 'sepal_width', label: 'Sepal Width' },
 		{ value: 'petal_length', label: 'Petal Length' },
@@ -59,7 +59,7 @@
 <div>
 	{$chartData.selectedX}
 	{$chartData.selectedY}
-	<AxisSelectMenus />
+	<AxisSelectMenus {attributes} />
 	<svg {width} {height}>
 		<g transform={`translate(${margin.left}, ${margin.top})`}>
 			<AxisBottom {xScale} {innerHeight} tickOffset={10} />
