@@ -39,9 +39,18 @@
 	const xValue = (item: any) => item[$chartData.selectedX];
 	const yValue = (item: any) => item[$chartData.selectedY];
 
+	// create function to get value from label
+	const getLabel = (value: string) => {
+		for (let i = 0; i < attributes.length; i++) {
+			if (attributes[i].value === value) {
+				return attributes[i].label;
+			}
+		}
+	};
+
 	// x and y axis labels
-	const xAxisLabel = 'Sepal Length';
-	const yAxisLabel = 'Sepal Width';
+	$: xAxisLabel = getLabel($chartData.selectedX);
+	$: yAxisLabel = getLabel($chartData.selectedY);
 
 	// x and y scales
 	$: xScale = d3
