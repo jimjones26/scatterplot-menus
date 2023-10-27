@@ -69,19 +69,19 @@
 	<AxisSelectMenus {attributes} {xAxisLabel} {yAxisLabel} />
 	<svg {width} {height}>
 		<g transform={`translate(${margin.left}, ${margin.top})`}>
-			<AxisBottom {xScale} {innerHeight} tickOffset={10} />
-			<AxisLeft {yScale} {innerWidth} tickOffset={10} />
-			<Marks data={$chartData.data} {xScale} {yScale} {yValue} {xValue} circleRadius={10} />
+			<AxisBottom {xScale} {innerHeight} tickOffset={15} />
+			<AxisLeft {yScale} {innerWidth} tickOffset={15} />
+			<Marks data={$chartData.data} {xScale} {yScale} {yValue} {xValue} circleRadius={8} />
 			<text
 				text-anchor="middle"
-				transform={`translate(${-40}, ${innerHeight / 2}) rotate(-90)`}
-				class="fill-slate-600 text-xl">{yAxisLabel}</text
+				transform={`translate(${-45}, ${innerHeight / 2}) rotate(-90)`}
+				class="fill-slate-600 text-lg">{yAxisLabel}</text
 			>
 			<text
 				x={innerWidth / 2}
-				y={innerHeight + 40}
+				y={innerHeight + 45}
 				text-anchor="middle"
-				class="fill-slate-600 text-xl">{xAxisLabel}</text
+				class="fill-slate-600 text-lg">{xAxisLabel}</text
 			>
 		</g></svg
 	>
