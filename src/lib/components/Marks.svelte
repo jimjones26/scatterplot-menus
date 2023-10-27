@@ -10,7 +10,7 @@
 </script>
 
 {#each data as item, i}
-	<circle cx={xScale(xValue(item))} cy={yScale(yValue(item))} r={circleRadius} fill="#137B80">
+	<circle cx={xScale(xValue(item))} cy={yScale(yValue(item))} r={circleRadius} fill="#137B8085">
 		<title>{`x: ${xValue(item)}, y: ${yValue(item)}`}</title>
 	</circle>
 {/each}
