@@ -38,6 +38,7 @@
 	// x and y axis values
 	const xValue = (item: any) => item[$chartData.selectedX];
 	const yValue = (item: any) => item[$chartData.selectedY];
+	const colorValue = (item: any) => item.species;
 
 	// create function to get value from label
 	const getLabel = (value: string) => {
@@ -63,6 +64,10 @@
 		.domain(<Iterable<number>>d3.extent($chartData.data, yValue))
 		.range([0, innerHeight])
 		.nice();
+	$: colorScale = d3
+		.scaleOrdinal()
+		.domain($chartData.data.map(colorValue))
+		.range(['#E6842A85', '#137B8085', '#8E6C8A85']);
 </script>
 
 <div class="mt-5">
@@ -71,7 +76,16 @@
 		<g transform={`translate(${margin.left}, ${margin.top})`}>
 			<AxisBottom {xScale} {innerHeight} tickOffset={15} />
 			<AxisLeft {yScale} {innerWidth} tickOffset={15} />
-			<Marks data={$chartData.data} {xScale} {yScale} {yValue} {xValue} circleRadius={8} />
+			<Marks
+				data={$chartData.data}
+				{xScale}
+				{yScale}
+				{yValue}
+				{xValue}
+				{colorScale}
+				{colorValue}
+				circleRadius={8}
+			/>
 			<text
 				text-anchor="middle"
 				transform={`translate(${-45}, ${innerHeight / 2}) rotate(-90)`}
