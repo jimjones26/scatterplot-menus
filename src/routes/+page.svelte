@@ -44,12 +44,12 @@
 	const yAxisLabel = 'Sepal Width';
 
 	// x and y scales
-	const xScale = d3
+	$: xScale = d3
 		.scaleLinear()
 		.domain(<Iterable<number>>d3.extent($chartData.data, xValue))
 		.range([0, innerWidth])
 		.nice();
-	const yScale = d3
+	$: yScale = d3
 		.scaleLinear()
 		.domain(<Iterable<number>>d3.extent($chartData.data, yValue))
 		.range([0, innerHeight])
