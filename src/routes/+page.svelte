@@ -10,6 +10,15 @@
 	// grab the chart data from the store
 	const chartData: any = getContext('irisDataset');
 
+	// create attributes object for axis' values and labels
+	const attibutes = [
+		{ value: 'sepal_length', label: 'Sepal Length' },
+		{ value: 'sepal_width', label: 'Sepal Width' },
+		{ value: 'petal_length', label: 'Petal Length' },
+		{ value: 'petal_width', label: 'Petal Width' },
+		{ value: 'species', label: 'Species' }
+	];
+
 	// width, height and margins for svg container
 	const width: number = 960;
 	const height: number = 500;
