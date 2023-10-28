@@ -1,4 +1,4 @@
-import { get, writable } from 'svelte/store';
+import { writable } from 'svelte/store';
 import type { IrisItem } from './IrisItem';
 
 let _initialStoreValue: object = {
