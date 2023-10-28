@@ -1,6 +1,5 @@
 <script lang="ts">
 	import * as d3 from 'd3';
-	import type { IrisItem } from '$lib/stores/IrisItem';
 	import { getContext } from 'svelte';
 	import AxisBottom from '$lib/components/AxisBottom.svelte';
 	import AxisLeft from '$lib/components/AxisLeft.svelte';
