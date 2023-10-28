@@ -19,6 +19,9 @@
 		on:mouseenter={() => {
 			onHover(domain);
 		}}
+		on:mouseleave={() => {
+			onHover(null);
+		}}
 		role="contentinfo"
 	>
 		<circle fill={colorScale(domain)} r={tickSize} />
