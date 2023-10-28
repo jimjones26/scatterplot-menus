@@ -15,6 +15,7 @@
 
 {#each colorDomains as domain, i}
 	<g
+		class="mt-4 cursor-pointer"
 		transform={`translate(0, ${i * tickSpacing})`}
 		on:mouseenter={() => {
 			onHover(domain);
