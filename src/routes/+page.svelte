@@ -54,6 +54,8 @@
 	$: xAxisLabel = getLabel($chartData.selectedX);
 	$: yAxisLabel = getLabel($chartData.selectedY);
 
+	$: filteredData = $chartData.data.filter((d: any) => $chartData.hoveredValue === colorValue(d));
+
 	// x and y scales
 	$: xScale = d3
 		.scaleLinear()
@@ -80,8 +82,20 @@
 			<g transform={`translate(${innerWidth + 20}, 10)`}
 				><ColorLegend {colorScale} tickSpacing={25} tickSize={8} /></g
 			>
+			<g opacity={$chartData.hoveredValue ? 0.2 : 1}>
+				<Marks
+					data={$chartData.data}
+					{xScale}
+					{yScale}
+					{yValue}
+					{xValue}
+					{colorScale}
+					{colorValue}
+					circleRadius={8}
+				/>
+			</g>
 			<Marks
-				data={$chartData.data}
+				data={filteredData}
 				{xScale}
 				{yScale}
 				{yValue}

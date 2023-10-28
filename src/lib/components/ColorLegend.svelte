@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { dataStore } from '$lib/stores/data-store';
 	export let colorScale: any;
 	export let tickSpacing: any;
 	export let tickSize: any;
@@ -7,7 +8,9 @@
 		return domainValue;
 	});
 
-	const onHover = (domain: any) => console.log('EVENT: ', domain);
+	const onHover = (domain: any) => {
+		dataStore.updateHoveredValue(domain);
+	};
 </script>
 
 {#each colorDomains as domain, i}

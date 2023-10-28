@@ -1,11 +1,11 @@
-
 import { get, writable } from 'svelte/store';
 import type { IrisItem } from './IrisItem';
 
 let _initialStoreValue: object = {
   data: [],
   selectedX: null,
-  selectedY: null
+  selectedY: null,
+  hoveredValue: null,
 }
 
 const _dataStore = () => {
@@ -21,6 +21,9 @@ const _dataStore = () => {
     }),
     updateSelectedY: (value: any) => update((currentState: object) => {
       return { ...currentState, selectedY: value }
+    }),
+    updateHoveredValue: (value: any) => update((currentState: object) => {
+      return { ...currentState, hoveredValue: value }
     })
   }
 }
