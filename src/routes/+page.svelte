@@ -79,7 +79,12 @@
 			<AxisBottom {xScale} {innerHeight} tickOffset={15} />
 			<AxisLeft {yScale} {innerWidth} tickOffset={15} />
 			<g transform={`translate(${innerWidth + 20}, 10)`}
-				><ColorLegend {colorScale} tickSpacing={25} tickSize={8} /></g
+				><ColorLegend
+					{colorScale}
+					tickSpacing={25}
+					tickSize={8}
+					hoveredValue={$chartData.hoveredValue}
+				/></g
 			>
 			<g opacity={$chartData.hoveredValue ? 0.2 : 1}>
 				<Marks
