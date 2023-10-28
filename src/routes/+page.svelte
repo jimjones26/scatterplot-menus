@@ -1,6 +1,5 @@
 <script lang="ts">
 	import * as d3 from 'd3';
-	import type { IrisItem } from '$lib/stores/IrisItem';
 	import { getContext } from 'svelte';
 	import AxisBottom from '$lib/components/AxisBottom.svelte';
 	import AxisLeft from '$lib/components/AxisLeft.svelte';
@@ -54,6 +53,8 @@
 	$: xAxisLabel = getLabel($chartData.selectedX);
 	$: yAxisLabel = getLabel($chartData.selectedY);
 
+	$: filteredData = $chartData.data.filter((d: any) => $chartData.hoveredValue === colorValue(d));
+
 	// x and y scales
 	$: xScale = d3
 		.scaleLinear()
@@ -78,10 +79,27 @@
 			<AxisBottom {xScale} {innerHeight} tickOffset={15} />
 			<AxisLeft {yScale} {innerWidth} tickOffset={15} />
 			<g transform={`translate(${innerWidth + 20}, 10)`}
-				><ColorLegend {colorScale} tickSpacing={25} tickSize={8} /></g
+				><ColorLegend
+					{colorScale}
+					tickSpacing={25}
+					tickSize={8}
+					hoveredValue={$chartData.hoveredValue}
+				/></g
 			>
+			<g opacity={$chartData.hoveredValue ? 0.2 : 1}>
+				<Marks
+					data={$chartData.data}
+					{xScale}
+					{yScale}
+					{yValue}
+					{xValue}
+					{colorScale}
+					{colorValue}
+					circleRadius={8}
+				/>
+			</g>
 			<Marks
-				data={$chartData.data}
+				data={filteredData}
 				{xScale}
 				{yScale}
 				{yValue}
