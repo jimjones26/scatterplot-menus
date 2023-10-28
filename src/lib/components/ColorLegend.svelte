@@ -6,10 +6,18 @@
 	const colorDomains: any = colorScale.domain().map((domainValue: any) => {
 		return domainValue;
 	});
+
+	const onHover = (domain: any) => console.log('EVENT: ', domain);
 </script>
 
 {#each colorDomains as domain, i}
-	<g transform={`translate(0, ${i * tickSpacing})`}>
+	<g
+		transform={`translate(0, ${i * tickSpacing})`}
+		on:mouseenter={() => {
+			onHover(domain);
+		}}
+		role="contentinfo"
+	>
 		<circle fill={colorScale(domain)} r={tickSize} />
 		<text class="fill-slate-500 text-sm" x="12" dy=".32em">{domain}</text>
 	</g>
